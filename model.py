@@ -11,7 +11,7 @@ import numpy as np
 # In[2]:
 
 
-cardio_f = pd.read_csv('G:/SBME/Secound year/Secound Term/BioStatistics/Project/Data/Cardio.csv')
+cardio_f = pd.read_csv("cardio_train.csv")
 cardio_f.head()
 cardio_f.tail()
 cardio_f.size
