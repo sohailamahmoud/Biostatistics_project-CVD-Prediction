@@ -6,7 +6,6 @@
 
 import pandas as pd  
 import numpy as np
-# import matplotib.pyplot as plt
 
 
 # In[2]:
@@ -26,17 +25,12 @@ cardio_f['cardio'].value_counts()
 positive_f = cardio_f[cardio_f['cardio']==1] [0:200]
 negative_f = cardio_f[cardio_f['cardio']==0] [0:200]
 
-# positive_f.plot(kind = 'scatter' )
-
 
 # In[4]:
 
 
 cardio_f.dtypes
 
-# cardio_f = cardio_f[pd.to_numeric(cardio_f['weight'], errors = 'coerce').notnull()]
-# cardio_f['weight'] = cardio_f ['weight'].astype('int')
-# cardio_f.dtypes
 
 
 # In[5]:
@@ -94,8 +88,6 @@ from sklearn.metrics import accuracy_score, classification_report
 
 
 print(classification_report(y_test, y_predict))
-
-# print(classification_report(y_test, y_predict))
 print('Predicted labels: ', y_predict)
 print('Accuracy: ', accuracy_score(y_test, y_predict))
 
