@@ -97,6 +97,4 @@ print('Accuracy: ', accuracy_score(y_test, y_predict))
 
 pickle.dump(cardio_f, open('finalized_model.sav', 'wb'))
 
-
-
 # %%
