@@ -6,6 +6,7 @@
 
 import pandas as pd  
 import numpy as np
+import pickle
 
 
 # In[2]:
@@ -94,6 +95,8 @@ print('Accuracy: ', accuracy_score(y_test, y_predict))
 
 # In[ ]:
 
+pickle.dump(cardio_f, open('finalized_model.sav', 'wb'))
 
 
 
+# %%
