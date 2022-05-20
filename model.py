@@ -17,10 +17,6 @@ from sklearn.metrics import confusion_matrix
 
 cardio_f = pd.read_csv("cardio_train.csv")
 # cardio_f.head()
-# cardio_f.tail()
-# cardio_f.size
-# cardio_f.count()
-# cardio_f['cardio'].value_counts()
 
 
 # In[5]:
