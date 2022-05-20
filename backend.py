@@ -5,19 +5,14 @@ from flask import Flask, app, render_template, url_for, request
 import pickle
 
 def pre_process(x):
-    x['gender']= x['gender'].replace('male', 1)
-    x['gender']= x['gender'].replace('female', 0)
-    x['smoke']= x['smoke'].replace('No', 0)
-    x['smoke']= x['smoke'].replace('Yes', 1)
-    x['alco']= x['alco'].replace('No', 0)
-    x['alco']= x['alco'].replace('Yes', 1)
-    x['active']= x['active'].replace('No', 0)
-    x['active']= x['active'].replace('Yes', 1)
+    
+    
+    
     return x
 
 
 def load_model(x):
-    model= pickle.load(open('finalized_model.sav', 'rb'))
+    model= pickle.load(open('model.py', 'rb'))
     out= model.predict(np.array(x), np.reshape(1, -1))
     return out(0)
 
