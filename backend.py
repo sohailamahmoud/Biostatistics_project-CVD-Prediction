@@ -21,7 +21,7 @@ def load_model(x):
     out= model.predict(np.array(x), np.reshape(1, -1))
     return out(0)
 
-app = Flask(__name__, template_folder='D:\Edu\Statistics\Statistics Project\Biostatistics_project-master\Biostatistics_project-master\Biostatistics\index1.html')
+app = Flask(__name__)
 
 @app.route('/', methods=["GET"])
 def inder():
