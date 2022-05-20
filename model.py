@@ -74,7 +74,7 @@ y_test.shape
 
 from sklearn import svm
 
-classifier = svm.SVC(kernel = 'linear', gamma = 'auto', C = 1)
+classifier = svm.SVC(kernel = 'linear', gamma = 'auto', C = 2)
 classifier.fit(X_train, y_train)
 
 y_predict = classifier.predict(X_test)
