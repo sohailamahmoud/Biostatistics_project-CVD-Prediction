@@ -9,72 +9,81 @@
      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
      crossorigin="anonymous">
-     <link rel ="stylesheet" href="css/temp.css">
-     <style>
-    
-        </style>
+     
+    <style>
+      p{color:black; font-size: larger;}
+      body{background-color: rgba(135, 180, 222, 0.212)}
+      </style>
 </head>
+
 <body>
+
     <div class="container">
-        <form>
+        <form form action="{{ url_for('show_predict') }}" method="post">
         <br><br>
             <h1>CardioVascular Detection</h1>
             <br><br>
             <div class="form-group">
-              <label for="Name">Name</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="age">Age</label>
-              <input type="text" class="form-control">
+              <label for="Age">Age</label>
+              <input type="text" class="form-control" name="age" required>
          
             </div>
             <div class="form-group">
-              <label for="gender">Gender</label>
-              <select class="form-control">
-                <option>Male</option>
-                <option>Female</option>
+              <label>Gender</label>
+              <select class="form-control" name="gender" required>
+                <option value = "2">Male</option>
+                <option value = "1">Female</option>
               </select>
             </div>
             <div class="form-group">
                 <label for="height">Height</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="height" required>
             </div>
             <div class="form-group">
                 <label for="weight">Weight</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="weight" required>
             </div>
 
             <div class="form-group">
                 <label for="ap-hi">AP-HI</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="AP-HI" required>
             </div>
             <div class="form-group">
-                <label for="ap-ho">AP-HO</label>
-                <input type="text" class="form-control">
+                <label for="ap-ho">AP-LO</label>
+                <input type="text" class="form-control" name="AP-LO"required>
             </div>
+
             <div class="form-group">
-                <label for="cholesterol">Cholesterol</label>
-                <input type="text" class="form-control">
+              <label>Cholesterol</label>
+              <select class="form-control" name="Cholesterol" required>
+                <option value = "1">Normal</option>
+                <option value = "2">Above Normal</option>
+                <option value = "3">Well above Normal</option>
+              </select>
             </div>
+
+            
             <div class="form-group">
-                <label for="gluc">Glucose</label>
-                <input type="text" class="form-control">
+              <label>Glucose</label>
+              <select class="form-control" name="Glucose" required>
+                <option value = "1">Normal</option>
+                <option value = "2">Above Normal</option>
+                <option value = "3">Well above Normal</option>
+              </select>
             </div>
-            <br>
             
             <div class="row">
                 <legend class="col-form-label col-sm-2 pt-0">Smoke</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio">
-                    <label class="form-check-label" for="yes">
+                    <input class="form-check-input" type="radio" name="smoke" value="1">
+                    <label class="form-check-label">
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" >
-                    <label class="form-check-label" for="no">
+                    <input class="form-check-input" type="radio" name="smoke" value = "0" >
+                    <label class="form-check-label" >
                       No
                     </label>
                   </div>
@@ -86,13 +95,13 @@
                 <legend class="col-form-label col-sm-2 pt-0">Alcohol</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio">
+                    <input class="form-check-input" type="radio" name="alcohol" value="1">
                     <label class="form-check-label" for="yes">
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" >
+                    <input class="form-check-input" type="radio" name="alcohol" value="0">
                     <label class="form-check-label" for="no">
                       No
                     </label>
@@ -101,45 +110,35 @@
               </div>
               <br>
 
-              <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Cardio</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio">
-                    <label class="form-check-label" for="yes">
-                      Yes
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" >
-                    <label class="form-check-label" for="no">
-                      No
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <br>
-
+              
               <div class="row">
                 <legend class="col-form-label col-sm-2 pt-0">Active</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio">
+                    <input class="form-check-input" type="radio" name="Active" value=" 1">
                     <label class="form-check-label" for="yes">
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" >
+                    <input class="form-check-input" type="radio"  name="Active" value="0">
                     <label class="form-check-label" for="no">
                       No
                     </label>
                   </div>
-                  <button type="button" class="btn btn-light" style="float:right; height:50px; width:90px">Submit</button>
+                  <button type="submit" class="btn btn-light" style="float:right; height:50px; width:90px">Submit</button>
                 </div>
               </div>
               <br>
           </form>
-    </div>
+     
+      <p>
+      {{ prediction_text }}  
+      </p>
+      <br>
+          
+
+  </div>
+    <br>
 </body>
 </html>
