@@ -14,13 +14,13 @@
       p{color:black; font-size: larger;}
       body{background-color: rgba(135, 180, 222, 0.212)}
       </style>
-
 </head>
 
 <body>
 
     <div class="container">
-<br><br>
+        <form form action="{{ url_for('show_predict') }}" method="post">
+        <br><br>
             <h1>CardioVascular Detection</h1>
             <br><br>
             <div class="form-group">
@@ -29,65 +29,37 @@
          
             </div>
             <div class="form-group">
-<<<<<<< HEAD:templates/index.html
               <label>Gender</label>
               <select class="form-control" name="gender" required>
                 <option value = "2">Male</option>
                 <option value = "1">Female</option>
-=======
-              <label for="gender">Gender</label>
-              <select class="form-control" required>
-                <option>Male</option>
-                <option>Female</option>
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
               </select>
             </div>
             <div class="form-group">
                 <label for="height">Height</label>
-<<<<<<< HEAD:templates/index.html
                 <input type="text" class="form-control" name="height" required>
             </div>
             <div class="form-group">
                 <label for="weight">Weight</label>
                 <input type="text" class="form-control" name="weight" required>
-=======
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="weight">Weight</label>
-                <input type="text" class="form-control" required>
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
             </div>
 
             <div class="form-group">
                 <label for="ap-hi">AP-HI</label>
-<<<<<<< HEAD:templates/index.html
                 <input type="text" class="form-control" name="AP-HI" required>
             </div>
             <div class="form-group">
                 <label for="ap-ho">AP-LO</label>
                 <input type="text" class="form-control" name="AP-LO"required>
-=======
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="ap-ho">AP-HO</label>
-                <input type="text" class="form-control" required>
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
             </div>
 
             <div class="form-group">
-<<<<<<< HEAD:templates/index.html
               <label>Cholesterol</label>
               <select class="form-control" name="Cholesterol" required>
                 <option value = "1">Normal</option>
                 <option value = "2">Above Normal</option>
                 <option value = "3">Well above Normal</option>
               </select>
-=======
-                <label for="cholesterol">Cholesterol</label>
-                <input type="text" class="form-control" required>
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
             </div>
 
             
@@ -104,24 +76,14 @@
                 <legend class="col-form-label col-sm-2 pt-0">Smoke</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio" name="smoke" value="1">
                     <label class="form-check-label">
-=======
-                    <input class="form-check-input" type="radio" name="y">
-                    <label class="form-check-label" for="yes">
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio" name="smoke" value = "0" >
                     <label class="form-check-label" >
-=======
-                    <input class="form-check-input" type="radio" name="y" >
-                    <label class="form-check-label" for="no">
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                       No
                     </label>
                   </div>
@@ -133,21 +95,13 @@
                 <legend class="col-form-label col-sm-2 pt-0">Alcohol</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio" name="alcohol" value="1">
-=======
-                    <input class="form-check-input" type="radio" name="r">
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                     <label class="form-check-label" for="yes">
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio" name="alcohol" value="0">
-=======
-                    <input class="form-check-input" type="radio" name="r" >
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                     <label class="form-check-label" for="no">
                       No
                     </label>
@@ -161,21 +115,13 @@
                 <legend class="col-form-label col-sm-2 pt-0">Active</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio" name="Active" value=" 1">
-=======
-                    <input class="form-check-input" type="radio" name="u" >
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                     <label class="form-check-label" for="yes">
                       Yes
                     </label>
                   </div>
                   <div class="form-check">
-<<<<<<< HEAD:templates/index.html
                     <input class="form-check-input" type="radio"  name="Active" value="0">
-=======
-                    <input class="form-check-input" type="radio"  name="u">
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
                     <label class="form-check-label" for="no">
                       No
                     </label>
@@ -185,7 +131,6 @@
               </div>
               <br>
           </form>
-<<<<<<< HEAD:templates/index.html
      
       <p>
       {{ prediction_text }}  
@@ -195,9 +140,5 @@
 
   </div>
     <br>
-=======
-          {{ prediction_text }}
-    </div>
->>>>>>> 42d8541109622a9b558aea59e02030e7b8a6d12a:biostatistics/templates/index1.html
 </body>
 </html>

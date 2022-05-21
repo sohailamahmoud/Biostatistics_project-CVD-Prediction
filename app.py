@@ -7,50 +7,89 @@ import pickle
 
 
 submission = []
-
-def home():
-    if request.method== "POST":
-        print(request.form)
-        submission.append(
-                ( 
-             request.form.get("age"),
-             request.form.get("gender"),
-             request.form.get("height"),
-             request.form.get("weight"),
-             request.form.get("AP-HI"),
-             request.form.get("AP-LO"),
-             request.form.get("Cholesterol"),
-             request.form.get("Glucose"),
-             request.form.get("smoke"),
-             request.form.get("alcohol"),
-             request.form.get("Active"),
-                 )
-                       )
-    return render_template("index.html")
-
 app = Flask(__name__)
-
-model = pickle.load(open("model.pkl", "rb"))
 
 @app.route("/", methods=["GET","POST"])
 def home():
-    if request.method == "POST":
-        print(request.form)
+
     return render_template("index.html")
+
+
+
+model = pickle.load(open("model.pkl", "rb"))
+
+
 
 @app.route("/predict", methods=["GET","POST"])
 def show_predict():
+    global submission
+    if request.method== "POST":
+        age = request.form.get("age")
+        # age1 = age * 365
+        submission.append(age)
 
-    int_features = [x for x in request.form.values()]
-    final_features = [np.array(int_features)]
+        gender = request.form.get("gender")
+        if gender == "female":
+            gender = 1
+        else:
+            gender = 2
+        submission.append(gender)
+
+        submission.append(request.form.get("height"))
+
+        submission.append(request.form.get("weight"))
+        
+        submission.append(request.form.get("AP-HI"))
+        
+        submission.append(request.form.get("AP-LO"))
+        
+        Cholesterol = request.form.get("Cholesterol")
+        if Cholesterol == "Normal":
+            Cholesterol = 1
+        elif Cholesterol == "Above normal":
+            Cholesterol = 2
+        else:
+            Cholesterol = 3
+        submission.append(Cholesterol)
+
+        glucose = request.form.get("Glucose")
+        if glucose == "Normal":
+            glucose = 1
+        elif glucose == "Above normal":
+            glucose = 2
+        else:
+            glucose = 3
+        submission.append(glucose)
+
+        smoke = request.form.get("smoke")
+        if smoke == "No":
+            smoke = 0
+        else:
+            smoke = 1
+        submission.append(smoke)
+
+        alcohol = request.form.get("alcohol")
+        if alcohol == "No":
+            alcohol = 0
+        else:
+            alcohol = 1
+        submission.append(alcohol)
+
+        Active = request.form.get("Active")
+        if Active == "No":
+            Active = 0
+        else:
+            Active = 1
+        submission.append(Active)   
+    final_features = [submission]
     prediction = model.predict(final_features)
     
     if prediction == 1:
-        prediction_text = "cardio"
+        prediction_text = "have cardiovascular disease"
     elif prediction == 0:
-        prediction_text = "not"
+        prediction_text = "not have cardiovascular disease"
 
-    return render_template("index.html", prediction_text = "The prediction is {}".format(prediction_text))
+    return render_template("index.html", prediction_text = "You may {}".format(prediction_text))
 
 if __name__ == "__main__":
     app.run(debug=True)

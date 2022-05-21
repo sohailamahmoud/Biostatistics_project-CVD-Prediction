@@ -12,24 +12,12 @@ import pickle
 
 cardio_f = pd.read_csv("cardio_train.csv")
 cardio_f.head()
-cardio_f.tail()
-cardio_f.size
-cardio_f.count()
-cardio_f['cardio'].value_counts()
-
-
-# In[3]:
-
-
-positive_f = cardio_f[cardio_f['cardio']==1] [0:200]
-negative_f = cardio_f[cardio_f['cardio']==0] [0:200]
 
 
 # In[4]:
 
 
 cardio_f.dtypes
-
 
 
 # In[5]:
