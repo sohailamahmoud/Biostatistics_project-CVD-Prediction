@@ -13,7 +13,7 @@ def home():
         print(request.form)
         submission.append(
                 ( 
-             request.form.get("age" * 365),
+             request.form.get("age"),
              request.form.get("gender"),
              request.form.get("height"),
              request.form.get("weight"),
