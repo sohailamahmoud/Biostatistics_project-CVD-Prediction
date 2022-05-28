@@ -24,9 +24,8 @@ model = pickle.load(open("model.pkl", "rb"))
 def show_predict():
     global submission
     if request.method== "POST":
-        age = request.form.get("age")
-        # age1 = age * 365
-        submission.append(age)
+       
+        submission.append(request.form.get("age"))
 
         gender = request.form.get("gender")
         if gender == "female":
@@ -80,16 +79,20 @@ def show_predict():
             Active = 0
         else:
             Active = 1
-        submission.append(Active)   
+        submission.append(Active)  
+
     final_features = [submission]
+
     prediction = model.predict(final_features)
+
+    submission = []
     
     if prediction == 1:
-        prediction_text = "have cardiovascular disease"
+        prediction_text = "have a cardiovascular disease. Please contact a doctor for certain results."
     elif prediction == 0:
-        prediction_text = "not have cardiovascular disease"
+        prediction_text = "not have a cardiovascular disease. Please check with a doctor for certain results."
 
-    return render_template("index.html", prediction_text = "You may {}".format(prediction_text))
+    return render_template("index.html", prediction_text = " You may {}".format(prediction_text))
 
 if __name__ == "__main__":
     app.run(debug=True)
