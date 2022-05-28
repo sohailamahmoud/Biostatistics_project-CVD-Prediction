@@ -3,6 +3,7 @@
 
 # In[1]:
 
+# from hashlib import sha1
 import pandas as pd  
 import numpy as np
 import pickle
@@ -10,64 +11,130 @@ import pickle
 # In[2]:
 
 
-cardio_f = pd.read_csv("cardio_train.csv")
-cardio_f.head()
+df = pd.read_csv("cardio_train.csv")
+df.head()
 
 
 # In[4]:
 
-cardio_f.shape
-cardio_f.id.duplicated().sum()
+df.shape
+# (69301, 13)
 
-# cardio_f.dtypes
+# In[]:
+
+df.dtypes
+
+# In[]:
+
+df.columns
+
+# df = cardio_f [['age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
+#        'cholesterol', 'gluc', 'smoke', 'alco', 'active']]
 
 
-# In[5]:
+# In[]:
+
+df.age = round(df.age/ 365)
 
 
-cardio_f.columns
+# In[]:
 
-feature_f = cardio_f [['age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
+df.describe()
+
+# In[]:
+
+# Removing height outliers
+
+height_upper_limit = df.height.mean() + 4*df.height.std()   
+# height_upper_limit = 197.2
+
+height_lower_limit = df.height.mean() - 4*df.height.std()
+# height_lower_limit = 131.5
+
+df[(df.height > height_upper_limit) | (df.height < height_lower_limit)].shape
+# 121 outlier    (121, 13)
+
+df = df[(df.height < height_upper_limit) & (df.height > height_lower_limit)]
+
+df.shape
+# (69180, 13)
+
+# In[]:
+
+# Removing weight outliers
+
+df[(df.weight > 200) | (df.weight < 40)].shape
+
+df = df[(df.weight < 200) & (df.weight > 40)]
+
+df.shape
+# (69087, 13)
+
+# In[]:
+
+df.describe()
+
+
+# In[]:
+
+# Removing ap_hi outliers
+
+df[(df.ap_hi > 370) | (df.ap_hi < 50)].shape
+# (224, 13)
+
+df = df[(df.ap_hi < 370) & (df.ap_hi > 50)]
+
+df.shape
+# (68863, 13)
+
+
+# In[]:
+
+# Removing ap_lo outliers
+
+
+df[(df.ap_lo > 360) | (df.ap_lo < 20)].shape
+
+df = df[(df.ap_lo < 360) & (df.ap_lo > 20)]
+
+df.shape
+# (67887, 13)
+
+# In[]:
+
+df_model = df [['age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
        'cholesterol', 'gluc', 'smoke', 'alco', 'active']]
 
-# In[]:
+df_model.describe()
 
-feature_f['active'].value_counts()
-
-# In[]:
-
-feature_f.isna().sum()
-# feature_f = feature_f.dropna()
 
 
 
 # In[6]:
 
-x = np.asarray(feature_f)
+x = np.asarray(df_model)
 
-y = np.asarray(cardio_f['cardio'])
+y = np.asarray(df['cardio'])
 
 y[0:5]
 
 
 # In[7]:
 
-
-
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.8, random_state = 4)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 4)
 
-# (13860, 11)
+# (13577, 11)
 X_train.shape
 
-# (13860, 1)
+# (13577, 1)
 y_train.shape
 
-# (55441, 11)
+# (54310, 11)
 X_test.shape
 
-# (55441, 1)
+# (54310, 1)
 y_test.shape
 
 
