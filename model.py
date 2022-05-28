@@ -16,8 +16,10 @@ cardio_f.head()
 
 # In[4]:
 
+cardio_f.shape
+cardio_f.id.duplicated().sum()
 
-cardio_f.dtypes
+# cardio_f.dtypes
 
 
 # In[5]:
@@ -27,6 +29,19 @@ cardio_f.columns
 
 feature_f = cardio_f [['age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
        'cholesterol', 'gluc', 'smoke', 'alco', 'active']]
+
+# In[]:
+
+feature_f['active'].value_counts()
+
+# In[]:
+
+feature_f.isna().sum()
+# feature_f = feature_f.dropna()
+
+
+
+# In[6]:
 
 x = np.asarray(feature_f)
 
