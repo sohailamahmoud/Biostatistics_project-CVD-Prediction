@@ -90,7 +90,7 @@ def show_predict():
     if prediction == 1:
         prediction_text = "have a cardiovascular disease. Please contact a doctor for certain results."
     elif prediction == 0:
-        prediction_text = "not have a cardiovascular disease. Please check with a doctor for certain results."
+        prediction_text = "not have a cardiovascular disease."
 
     return render_template("index.html", prediction_text = " You may {}".format(prediction_text))
 
